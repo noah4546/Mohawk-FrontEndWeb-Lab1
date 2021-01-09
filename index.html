@@ -1,23 +1,74 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Noah Tomkins - Lab 1</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+    <head>
+        <title>Noah Tomkins - Lab 1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAneeYe0KtXE4Vd71nryWy-0DKVkZb2vQ0&callback=initMap&libraries=&v=weekly"
-      defer
-    ></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
-    <script src="js/education.js"></script>
-    <script src="js/index.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAneeYe0KtXE4Vd71nryWy-0DKVkZb2vQ0&callback=initMap&libraries=&v=weekly"
+            defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="css/index.css">
-  </head>
-  <body>
-    <div id="map"></div>
-  </body>
+        <script src="js/education.js"></script>
+        <script src="js/index.js"></script>
+
+        <link rel="stylesheet" href="css/index.css">
+    </head>
+    <body>
+        <header>
+            <h1>Noah Tomkins - Maps and Geolocation</h1>
+        </header>
+        <main>
+            <div class="category">
+                <!-- All, Elementary, Middle, Secondary, Post-Secondary, Alternative, Adult and Section 23 -->   
+                <label for="all">All</label>
+                <input type="radio" id="all" name="category" value="all" checked>
+                
+                <label for="elementary">Elementary School</label>
+                <input type="radio" id="elementary" name="category" value="Elementary School">
+                
+                <label for="middle">Middle School</label>
+                <input type="radio" id="middle" name="category" value="Middle School">
+                
+                <label for="secondary">Secondary School</label>
+                <input type="radio" id="secondary" name="category" value="Secondary School">
+                
+                <label for="post-Secondary">Post Secondary</label>
+                <input type="radio" id="post-Secondary" name="category" value="Post Secondary">
+                
+                <label for="alternative">Alternative Education</label>
+                <input type="radio" id="alternative" name="category" value="Alternative Education">
+                
+                <label for="adult">Adult Learning</label>
+                <input type="radio" id="adult" name="category" value="Adult Learning">
+                
+                <label for="section-23">Section 23 Program</label>
+                <input type="radio" id="section-23" name="category" value="Section 23 Program">
+            </div>
+            <div class="map-box">
+                <div id="map" class="map"></div>
+                <p class="error"><!-- Filled by js --></p>
+            </div>
+            <div class="directions">
+                <h2>Directions</h2>         
+                <button type="button" id="clear_directions">Clear Directions</button>
+                <div id="directions">
+                    <!-- Filled by js -->
+                </div>
+            </div>
+            <div class="address">
+                <form id="address_form">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" />
+
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" />
+
+                    <input type="submit" />
+                </form>
+            </div>
+        </main>
+    </body>
 </html>

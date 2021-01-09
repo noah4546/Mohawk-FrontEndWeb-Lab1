@@ -1,10 +1,43 @@
-#map {
-    height: 100%;
-}
-
-html,
-body {
-    height: 100%;
+* {
     margin: 0;
     padding: 0;
+}
+
+header h1 {
+    text-align: center;
+    margin: 50px;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 33% auto 33%;
+}
+
+.category input {
+    float: right;
+    margin-top: 7px;
+}
+
+.category label {
+    float: right;
+    clear: right;
+    width: 150px;
+    padding: 5px;
+}
+
+#map {
+    height: 600px;
+    width: 600px;
+    border: 2px solid black;
+}
+
+.error {
+    text-align: center;
+    color: red;
+    font-size: 1.1em;
+}
+
+.address {
+    margin-top: 30px;
+    grid-column: 2;
 }
