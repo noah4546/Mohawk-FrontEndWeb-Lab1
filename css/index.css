@@ -1,34 +1,12 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
-header h1 {
-    text-align: center;
-    margin: 50px;
-}
-
-main {
-    display: grid;
-    grid-template-columns: 33% auto 33%;
-}
-
-.category input {
-    float: right;
-    margin-top: 7px;
-}
-
-.category label {
-    float: right;
-    clear: right;
-    width: 150px;
-    padding: 5px;
-}
-
 #map {
-    height: 600px;
+    height: 500px;
     width: 600px;
     border: 2px solid black;
+}
+
+.info-window p {
+    margin: 0;
+    padding: 0;
 }
 
 .error {
@@ -37,7 +15,6 @@ main {
     font-size: 1.1em;
 }
 
-.address {
-    margin-top: 30px;
-    grid-column: 2;
+#directions {
+    height: 400px;
 }

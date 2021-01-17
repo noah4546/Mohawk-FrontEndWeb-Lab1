@@ -15,6 +15,7 @@ function initMap() {
         zoom: 10.15,
     });
     directionsRenderer.setMap(map);
+    directionsRenderer.setPanel(document.getElementById("directions"));
 
     if (navigator.geolocation) {
             
@@ -51,11 +52,13 @@ function initMap() {
 
         infowindows[i] = new google.maps.InfoWindow({
             content: `
-            <p><a href="${education[i].WEBSITE}">${education[i].NAME}</a></p>
-            <p>${education[i].ADDRESS}</p>
-            <p>${education[i].CATEGORY}</p>
-            <p>${education[i].COMMUNITY}</p>
-            <p><a href="#" onclick="return directions('${education[i].LATITUDE},${education[i].LONGITUDE}');">directions</a></p>
+            <div class="info-window">
+                <p><a href="${education[i].WEBSITE}">${education[i].NAME}</a></p>
+                <p>${education[i].ADDRESS}</p>
+                <p>${education[i].CATEGORY}</p>
+                <p>${education[i].COMMUNITY}</p>
+                <p><a href="#" onclick="return directions('${education[i].LATITUDE},${education[i].LONGITUDE}');">directions</a></p>
+            </div>
             `
         })
         markers[i] = new google.maps.Marker({
@@ -79,13 +82,11 @@ function directions(destination) {
 
     directionsService.route(
         {
-            origin: {
-                query: origin
-            },
-            destination: {
-                query: destination
-            },
-            travelMode: google.maps.TravelMode.DRIVING,
+            origin: origin,
+            destination: destination,
+            provideRouteAlternatives: false,
+            travelMode: 'DRIVING',
+            unitSystem: google.maps.UnitSystem.IMPERIAL
         },
         (response, status) => {
             if (status === "OK") {
@@ -148,9 +149,11 @@ $( document ).ready(function() {
 
                 customInfoWindows.push(new google.maps.InfoWindow({
                     content: `
-                    <p>${address_name}</p>
-                    <p>${address}</p>
-                    <p><a href="#" onclick="return directions('${address}');">directions</a></p>
+                    <div class="info-window">
+                        <p>${address_name}</p>
+                        <p>${address}</p>
+                        <p><a href="#" onclick="return directions('${address}');">directions</a></p>
+                    </div>
                     `
                 }));
                 customMarkers.push(new google.maps.Marker({
