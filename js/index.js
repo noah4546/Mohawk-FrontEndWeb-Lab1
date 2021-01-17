@@ -39,13 +39,23 @@ function initMap() {
                 });
             },
             () => {
-                $(".error").html("Error: User has opt-out of Geolocation");
+                $(".error")
+                    .html("Error: User has opt-out of Geolocation")
+                    .fadeOut(6000, function() {
+                        $(this).html(" ");
+                        $(this).show();
+                    });
             }
         )
 
     } else {
         // Browser doesn't support Geolocation
-        $(".error").html("Error: Browser doesn't support Geolocation");
+        $(".error")
+            .html("Error: Browser doesn't support Geolocation")
+            .fadeOut(6000, function() {
+                $(this).html(" ");
+                        $(this).show();
+            });
     }
 
     for (let i = 0; i < education.length; i++) {
@@ -80,6 +90,7 @@ function directions(destination) {
 
     let origin = `${pos.lat},${pos.lng}`;
 
+    directionsRenderer.setMap(map);
     directionsService.route(
         {
             origin: origin,
@@ -92,7 +103,12 @@ function directions(destination) {
             if (status === "OK") {
                 directionsRenderer.setDirections(response);
             } else {
-                $(".error").html(`Error: Directions request failed due to ${staus}`);
+                $(".error")
+                    .html(`Error: Directions request failed due to ${staus}`)
+                    .fadeOut(6000, function() {
+                        $(this).html(" ");
+                        $(this).show();
+                    });
             }
         }
     )
@@ -139,6 +155,11 @@ $( document ).ready(function() {
         changePins(`${$(this).val()}`);
     });
 
+    $("#clear_directions").on("click", function() {
+        $("#directions").html(" ");
+        directionsRenderer.setMap(null);
+    });
+
     document.forms.address_form.addEventListener("submit", function(event) {
         event.preventDefault();
         let address_name = document.forms.address_form.name.value;
@@ -146,6 +167,7 @@ $( document ).ready(function() {
 
         geocoder.geocode({'address': address}, function(results, status) {
             if (status === "OK") {
+                console.log(status);
 
                 customInfoWindows.push(new google.maps.InfoWindow({
                     content: `
@@ -165,8 +187,22 @@ $( document ).ready(function() {
                     closeOpenInfoWindows();
                     customInfoWindows[customInfoWindows.length - 1].open(map, customMarkers[customMarkers.length - 1]);
                 });
+
+                $(".success")
+                    .html(`Added new location: ${address_name} : ${address} to the map`)
+                    .fadeOut(2000, function() {
+                        $(this).html(" ");
+                        $(this).show();
+                    });
+
+                $("#address_form div input[type=text]").val("");
             } else {
-                $(".error").html(`Error: Geocode was not successful for the following reason: ${staus}`);
+                $(".error")
+                    .html(`Error: Geocode was not successful for the following reason: ${status}`)
+                    .fadeOut(6000, function() {
+                        $(this).html(" ");
+                        $(this).show();
+                    });
             }
         });
   

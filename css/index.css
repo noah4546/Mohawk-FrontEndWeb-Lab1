@@ -1,7 +1,11 @@
 #map {
-    height: 500px;
+    height: 525px;
     width: 600px;
     border: 2px solid black;
+}
+
+.map-box {
+    height: 575px;
 }
 
 .info-window p {
@@ -15,6 +19,18 @@
     font-size: 1.1em;
 }
 
+.success {
+    text-align: center;
+    color: green;
+    font-size: 1.1em;
+}
+
 #directions {
     height: 400px;
+}
+
+input[type=submit] {
+    width: 40%;
+    margin-left: 30%;
+    margin-right: auto;
 }
